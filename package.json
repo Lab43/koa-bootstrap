@@ -1,0 +1,15 @@
+{
+  "name": "saas-bootstrap",
+  "main": "index.js",
+  "dependencies": {
+    "koa": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*"
+  },
+  "engines": {
+    "node": ">= 0.11.9"
+  }
+}
