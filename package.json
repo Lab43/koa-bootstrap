@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.11",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-mocha-cov": "~0.1.1",
     "mocha": "~1.16.2",
