@@ -1,9 +1,9 @@
 {
   "name": "saas-bootstrap",
   "main": "index.js",
-  "repository" : {
-    "type" : "git", 
-    "url" : "http://github.com/eusonic/saas-bootstrap.git"
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/eusonic/saas-bootstrap.git"
   },
   "scripts": {
     "test": "node --harmony ./node_modules/.bin/grunt"
@@ -17,7 +17,7 @@
   "devDependencies": {
     "grunt": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-mocha-test": "*",
+    "grunt-mocha-cov": "*",
     "mocha": "*",
     "should": "*",
     "supertest": "*"
