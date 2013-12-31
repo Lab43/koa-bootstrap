@@ -12,21 +12,19 @@ module.exports = function (grunt) {
         esnext: true,
       },
     },
-    mochacov: {
-      options: {
-        coveralls: {
-          serviceName: 'travis-ci'
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec'
         },
-      },
-      options: {
-        files: 'test/*.js'
-      },
-    },
+        src: ['test/**/*.js']
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-mocha-cov');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
-  grunt.registerTask('default', ['mochacov']);
+  grunt.registerTask('default', ['mochaTest']);
 
 };

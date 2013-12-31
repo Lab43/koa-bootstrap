@@ -6,6 +6,7 @@
     "url": "http://github.com/eusonic/saas-bootstrap.git"
   },
   "scripts": {
+    "start": "node --harmony ./app",
     "test": "node --harmony ./node_modules/.bin/grunt"
   },
   "engines": {
@@ -18,7 +19,7 @@
     "grunt": "~0.4.2",
     "grunt-cli": "~0.1.11",
     "grunt-contrib-jshint": "~0.8.0",
-    "grunt-mocha-cov": "~0.1.1",
+    "grunt-mocha-test": "~0.8.1",
     "mocha": "~1.16.2",
     "should": "~2.1.1",
     "supertest": "~0.8.2"
