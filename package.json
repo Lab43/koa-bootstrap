@@ -13,5 +13,10 @@
   },
   "dependencies": {
     "koa": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "supertest": "*"
   }
 }
