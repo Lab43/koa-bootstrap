@@ -13,13 +13,5 @@
   },
   "dependencies": {
     "koa": "*"
-  },
-  "devDependencies": {
-    "grunt": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-mocha-cov": "*",
-    "mocha": "*",
-    "should": "*",
-    "supertest": "*"
   }
 }
