@@ -15,7 +15,8 @@
   "dependencies": {
     "koa": "~0.2.1",
     "underscore": "~1.5.2",
-    "koa-route": "~1.0.2"
+    "koa-logger": "~1.1.0",
+    "koa-router": "~2.2.0"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
