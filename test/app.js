@@ -10,8 +10,18 @@ describe('GET /', function () {
       .get('/')
       .expect(200, 'Hello World')
       .end(function (err, res) {
-        if (err) return done(err);
-        done();
+        done(err);
+      });
+  });
+});
+
+describe('GET /foo', function () {
+  it('should return a 404 error', function (done) {
+    request(server)
+      .get('/foo')
+      .expect(404)
+      .end(function (err, res) {
+        done(err);
       });
   });
 });
