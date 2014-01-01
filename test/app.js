@@ -3,7 +3,6 @@ var should = require('should')
   , server = require('../app').server
 ;
 
-
 describe('GET /', function () {
   it('should return "Hello World"', function (done) {
     request(server)
