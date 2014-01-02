@@ -4,5 +4,13 @@ html(lang="en")
     - var titleTag = siteName
     - if (title) titleTag = title + ' | ' + titleTag
     title= titleTag
+
+    link(rel='stylesheet', href='/public/css/app.css')
+
+    script(src='/public/modernizr/modernizr.js')
+
   body
     block content
+
+    script(src='/public/jquery/jquery.js')
+    script(src='/public/foundation/js/foundation.js')

@@ -1,0 +1,6 @@
+{
+  "name": "saas-bootstrap",
+  "dependencies": {
+    "foundation": "zurb/bower-foundation"
+  }
+}

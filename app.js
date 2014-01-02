@@ -5,10 +5,19 @@ var koa = require('koa')
   , router = require('koa-router')
   , config = require('./config')(app.env)
   , views = require('koa-render')
+  , staticCache = require('koa-static-cache')
+  , files = {} // for static file cache
+  , mount = require('koa-mount')
 ;
 
 // configure server
 app.use(logger());
+
+// static files
+app.use(mount('/public', staticCache('./public', {}, files)));
+staticCache('./bower_components', {}, files);
+
+// views rendering
 app.use(views('./views', 'jade', {
   locals: {
     siteName: config.name
