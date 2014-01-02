@@ -1,6 +1,6 @@
 var config = {
   all: {
-    name: 'saas-bootstrap',
+    name: 'SAAS Bootstrap',
     port: 3000,
   },
   development: {

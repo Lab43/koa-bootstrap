@@ -7,7 +7,7 @@ describe('GET /', function () {
   it('should return "Hello World"', function (done) {
     request(server)
       .get('/')
-      .expect(200, 'Hello World')
+      .expect(200)
       .end(function (err, res) {
         done(err);
       });

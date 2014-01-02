@@ -4,10 +4,16 @@ var koa = require('koa')
   , app = koa()
   , router = require('koa-router')
   , config = require('./config')(app.env)
+  , views = require('koa-render')
 ;
 
 // configure server
 app.use(logger());
+app.use(views('./views', 'jade', {
+  locals: {
+    siteName: config.name
+  }
+}));
 
 // load routes
 app.use(router(app));
