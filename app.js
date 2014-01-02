@@ -5,7 +5,7 @@ var koa = require('koa')
   , router = require('koa-router')
   , config = require('./config')(app.env)
   , views = require('koa-render')
-  , staticCache = require('koa-static-cache')
+  , serve = require('koa-static')
   , files = {} // for static file cache
   , mount = require('koa-mount')
 ;
@@ -14,8 +14,8 @@ var koa = require('koa')
 app.use(logger());
 
 // static files
-app.use(mount('/public', staticCache('./public', {}, files)));
-staticCache('./bower_components', {}, files);
+app.use(mount('/public', serve('./public')));
+app.use(mount('/public', serve('./bower_components')));
 
 // views rendering
 app.use(views('./views', 'jade', {

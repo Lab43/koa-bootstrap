@@ -15,7 +15,7 @@
   "dependencies": {
     "jade": "~1.0.2",
     "koa": "~0.2.1",
-    "koa-static-cache": "~1.0.0",
+    "koa-static": "~1.4.1",
     "koa-logger": "~1.1.0",
     "koa-render": "~0.2.0",
     "koa-router": "~2.2.0",
