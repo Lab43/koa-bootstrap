@@ -6,7 +6,6 @@ var koa = require('koa')
   , config = require('./config')(app.env)
   , views = require('koa-render')
   , serve = require('koa-static')
-  , files = {} // for static file cache
   , mount = require('koa-mount')
 ;
 
@@ -26,7 +25,7 @@ app.use(views('./views', 'jade', {
 
 // load routes
 app.use(router(app));
-require('./routes')(app); 
+require('./routes')(app);
 
 // start server
 app.listen(config.port);

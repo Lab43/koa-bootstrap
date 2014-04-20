@@ -10,6 +10,7 @@ module.exports = function (grunt) {
       options: {
         laxcomma: true,
         esnext: true,
+        trailing: true,
       },
     },
     mochaTest: {

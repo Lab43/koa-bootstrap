@@ -4,7 +4,7 @@ var should = require('should')
 ;
 
 describe('GET /', function () {
-  it('should return "Hello World"', function (done) {
+  it('should return status 200', function (done) {
     request(server)
       .get('/')
       .expect(200)
