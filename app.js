@@ -4,7 +4,7 @@ var koa = require('koa')
   , app = koa()
   , router = require('koa-router')
   , config = require('./config')(app.env)
-  , views = require('koa-render')
+  , views = require('koa-views')
   , serve = require('koa-static')
   , mount = require('koa-mount')
 ;
