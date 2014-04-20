@@ -1,6 +1,6 @@
 var config = {
   all: {
-    name: 'Useful Science',
+    name: 'Koa Bootstrap',
     port: process.env.PORT || 3000,
   },
   development: {
