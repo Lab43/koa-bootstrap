@@ -1,6 +1,6 @@
 {
   "name": "saas-bootstrap",
   "dependencies": {
-    "foundation": "zurb/bower-foundation"
+    "jquery": "~2.1.0"
   }
 }

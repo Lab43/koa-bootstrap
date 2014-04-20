@@ -1,7 +1,7 @@
 var config = {
   all: {
     name: 'Useful Science',
-    port: 3000,
+    port: process.env.PORT || 3000,
   },
   development: {
   },

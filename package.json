@@ -1,6 +1,6 @@
 {
-  "name": "saas-bootstrap",
-  "main": "index.js",
+  "name": "koa-bootstrap",
+  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "http://github.com/eusonic/saas-bootstrap.git"
