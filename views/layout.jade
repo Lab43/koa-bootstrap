@@ -1,6 +1,9 @@
 doctype html
-html(lang="en")
+html(lang='en')
   head
+
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
     - var titleTag = siteName
     - if (title) titleTag = title + ' | ' + titleTag
     title= titleTag
@@ -8,6 +11,19 @@ html(lang="en")
     link(rel='stylesheet', href='/public/css/app.css')
 
   body
-    block content
+    .container
+      block content
 
-    script(src='/public/jquery/dist/jquery.js')
+    script(src='/vendor/jquery/dist/jquery.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/dropdown.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js')
+    script(src='/vendor/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js')

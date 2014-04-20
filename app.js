@@ -14,7 +14,7 @@ app.use(logger());
 
 // static files
 app.use(mount('/public', serve('./public')));
-app.use(mount('/public', serve('./bower_components')));
+app.use(mount('/vendor', serve('./bower_components')));
 
 // views rendering
 app.use(views('./views', 'jade', {
