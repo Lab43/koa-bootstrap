@@ -17,11 +17,15 @@ app.use(mount('/public', serve('./public')));
 app.use(mount('/vendor', serve('./bower_components')));
 
 // views rendering
-app.use(views('./views', 'jade', {
-  locals: {
+app.use(views('./views', 'jade'));
+
+// locals
+app.use(function *(next) {
+  this.locals = {
     siteName: config.name
-  }
-}));
+  };
+  yield next;
+});
 
 // load routes
 app.use(router(app));
