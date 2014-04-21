@@ -1,5 +1,6 @@
 {
   "name": "koa-bootstrap",
+  "subdomain": "koa-bootstrap",
   "main": "app.js",
   "repository": {
     "type": "git",
