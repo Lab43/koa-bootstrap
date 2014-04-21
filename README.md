@@ -34,3 +34,7 @@ $ compass compile
 ```
 $ grunt watch
 ```
+
+## Deploy
+
+The plan is to deploy to NodeJitsu, but that won't work until NodeJitsu starts supporting Node 0.11 or 0.12.
