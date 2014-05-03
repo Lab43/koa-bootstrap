@@ -7,7 +7,7 @@ var config = {
   },
   production: {
   },
-}
+};
 
 module.exports = function (env) {
   return require('underscore').extend(config.all, config[env]);

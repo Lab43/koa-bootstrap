@@ -20,19 +20,14 @@ $ bower install
 $ npm test
 ```
 
-## Run App
+## Run App In Development
 ```
-$ npm start
-```
-
-## Compile SCSS
-```
-$ compass compile
+$ gulp run
 ```
 
-## Watch for Changes
+## Run App in Production
 ```
-$ grunt watch
+$npm start
 ```
 
 ## Deploy
