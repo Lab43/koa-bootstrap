@@ -27,7 +27,7 @@ $ gulp run
 
 ## Run App in Production
 ```
-$npm start
+$ npm start
 ```
 
 ## Deploy
