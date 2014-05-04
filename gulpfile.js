@@ -7,6 +7,7 @@ var gulp = require('gulp')
   , concat = require('gulp-concat')
   , uglify = require('gulp-uglify')
   , minifyCss = require('gulp-minify-css')
+  , bower = require('gulp-bower')
   , config = require('./config')('development')
 ;
 
@@ -74,6 +75,10 @@ gulp.task('build', function () {
     }))
     .pipe(gulp.dest('public/build'))
   ;
+});
+
+gulp.task('postinstall', function () {
+  bower();
 });
 
 // can't be run directly because of node -harmony flag
