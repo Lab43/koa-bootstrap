@@ -4,24 +4,28 @@ var gulp = require('gulp')
 	, jshint = require('gulp-jshint')
   , mocha = require('gulp-mocha')
   , exit = require('gulp-exit')
+  , concat = require('gulp-concat')
+  , uglify = require('gulp-uglify')
+  , minifyCss = require('gulp-minify-css')
+  , config = require('./config')('development')
 ;
 
 // compile scss
 gulp.task('compass', function () {
-	gulp.src('./public/scss/app.scss')
+	gulp.src('public/scss/app.scss')
 		.pipe(compass({
-      css: './public/css',
-      sass: './public/scss',
-      image: './public/img',
-      javascript: './public/js',
-      import_path: ['./bower_components/bootstrap-sass-official/vendor/assets/stylesheets']
+      css: 'public/css',
+      sass: 'public/scss',
+      image: 'public/img',
+      import_path: ['bower_components/bootstrap-sass-official/vendor/assets/stylesheets']
   	}))
-		.pipe(gulp.dest('./public/css'))
+		.pipe(gulp.dest('public/css'))
 	;
 });
 
+// lint js
 gulp.task('lint', function () {
-	gulp.src(['./**/*.js', '!node_modules/**/*', '!bower_components/**/*'])
+	gulp.src(['./**/*.js', '!node_modules/**/*', '!bower_components/**/*', '!public/build/*.js'])
 		.pipe(jshint({
 			laxcomma: true,
       esnext: true,
@@ -42,8 +46,9 @@ gulp.task('test', function () {
   ;
 });
 
+// run app in development
+// will restart node when js changes, and recompile css when scss changes
 gulp.task('run', function () {
-	// restart node when app changes
 	nodemon({script: 'app.js', nodeArgs: ['--harmony']})
 		.on('change', function () {
 			console.log('nodemon change');
@@ -52,8 +57,23 @@ gulp.task('run', function () {
 			console.log('nodemon restart');
 		})
 	;
-	// recompile scss when files change
 	gulp.watch('public/**/*.scss', ['compass']);
+});
+
+// build js and css for production
+gulp.task('build', function () {
+  gulp.src(config.scripts)
+    .pipe(concat('all.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('public/build'))
+  ;
+  gulp.src(config.stylesheets)
+    .pipe(concat('all.css'))
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(gulp.dest('public/build'))
+  ;
 });
 
 // can't be run directly because of node -harmony flag

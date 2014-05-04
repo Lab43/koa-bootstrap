@@ -14,7 +14,7 @@ app.use(logger());
 
 // static files
 app.use(mount('/public', serve('./public')));
-app.use(mount('/vendor', serve('./bower_components')));
+app.use(mount('/bower_components', serve('./bower_components')));
 
 // views rendering
 app.use(views('./views', 'jade'));
@@ -22,7 +22,9 @@ app.use(views('./views', 'jade'));
 // locals
 app.use(function *(next) {
   this.locals = {
-    siteName: config.name
+    siteName: config.name,
+    scripts: config.scripts,
+    stylesheets: config.stylesheets
   };
   yield next;
 });

@@ -32,7 +32,10 @@
     "gulp-jshint": "^1.5.5",
     "jshint-stylish": "^0.2.0",
     "gulp-mocha": "^0.4.1",
-    "gulp-exit": "0.0.2"
+    "gulp-exit": "0.0.2",
+    "gulp-uglify": "^0.2.1",
+    "gulp-concat": "^2.2.0",
+    "gulp-minify-css": "^0.3.4"
   },
   "version": "0.0.1"
 }
