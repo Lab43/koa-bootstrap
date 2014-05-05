@@ -1,19 +1,53 @@
 var gulp = require('gulp')
 	, nodemon = require('gulp-nodemon')
 	, compass = require('gulp-compass')
-	, jshint = require('gulp-jshint')
-  , mocha = require('gulp-mocha')
-  , exit = require('gulp-exit')
   , concat = require('gulp-concat')
   , uglify = require('gulp-uglify')
   , minifyCss = require('gulp-minify-css')
-  , bower = require('gulp-bower')
+  , expect = require('gulp-expect-file')
   , config = require('./config')('development')
 ;
 
-// compile scss
-gulp.task('compass', function () {
-	gulp.src('public/scss/app.scss')
+
+
+// ====
+// node
+// ====
+
+gulp.task('watch-node', function () {
+  nodemon({script: 'app.js', nodeArgs: ['--harmony']})
+    .on('change', function () {
+      console.log('nodemon change');
+    })
+    .on('restart', function () {
+      console.log('nodemon restart');
+    })
+  ;
+});
+
+
+
+// ==========
+// css / scss
+// ==========
+
+gulp.task('minify-css', function () {
+  gulp.src(config.stylesheets)
+    .pipe(expect.real(config.stylesheets))
+    .pipe(concat('all.css'))
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(gulp.dest('public/css'))
+  ;
+});
+
+gulp.task('watch-css', ['minify-css'], function () {
+  gulp.watch(config.stylesheets, ['minify-css']);
+});
+
+gulp.task('compile-scss', function () {
+	gulp.src(['public/scss/app.scss'])
 		.pipe(compass({
       css: 'public/css',
       sass: 'public/scss',
@@ -24,63 +58,41 @@ gulp.task('compass', function () {
 	;
 });
 
-// lint js
-gulp.task('lint', function () {
-	gulp.src(['./**/*.js', '!node_modules/**/*', '!bower_components/**/*', '!public/build/*.js'])
-		.pipe(jshint({
-			laxcomma: true,
-      esnext: true,
-      trailing: true,
-		}))
-		.pipe(jshint.reporter('jshint-stylish'))
-	;
+gulp.task('watch-scss', ['compile-scss'], function () {
+  gulp.watch(['public/scss/*.scss'], ['compile-scss']);
 });
 
-// can't be run directly because of node -harmony flag
-// use $ npm test
-gulp.task('test', function () {
-  gulp.src(['test/**/*.js'])
-    .pipe(mocha({
-      reporter: 'spec'
-    }))
-    .pipe(exit())
-  ;
-});
 
-// run app in development
-// will restart node when js changes, and recompile css when scss changes
-gulp.task('run', function () {
-	nodemon({script: 'app.js', nodeArgs: ['--harmony']})
-		.on('change', function () {
-			console.log('nodemon change');
-		})
-		.on('restart', function () {
-			console.log('nodemon restart');
-		})
-	;
-	gulp.watch('public/**/*.scss', ['compass']);
-});
 
-// build js and css for production
-gulp.task('build', function () {
+// ===========
+// frontend js
+// ===========
+
+gulp.task('minify-js', function () {
   gulp.src(config.scripts)
+    .pipe(expect.real(config.scripts))
     .pipe(concat('all.js'))
     .pipe(uglify())
-    .pipe(gulp.dest('public/build'))
-  ;
-  gulp.src(config.stylesheets)
-    .pipe(concat('all.css'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(gulp.dest('public/build'))
+    .pipe(gulp.dest('public/js'))
   ;
 });
 
-gulp.task('postinstall', function () {
-  bower();
+gulp.task('watch-js', ['minify-js'], function () {
+  gulp.watch(config.scripts, ['minify-js']);
 });
 
-// can't be run directly because of node -harmony flag
-// use $ npm test
-gulp.task('default', ['lint', 'test']);
+
+
+// ==========
+// minify all
+// ==========
+
+gulp.task('minify', ['minify-js', 'minify-css']);
+
+
+
+// =====
+// watch
+// =====
+
+gulp.task('watch', ['watch-node', 'watch-css', 'watch-scss', 'watch-js']);

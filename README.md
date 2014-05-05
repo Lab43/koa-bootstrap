@@ -5,14 +5,29 @@ KOA Bootstrap
 
 Requires Node 0.11
 
-## Install Back End Dependencies
+
+## Set up development environment
 ```
 $ npm install
+$ bower install
+$ gulp compile-scss
 ```
 
-## Install Front End Dependencies
+## Run app
 ```
-$ bower install
+$ npm start
+```
+
+## Run app in watch mode
+```
+$ gulp watch
+```
+
+## Run app as production
+```
+$ gulp compile-scss
+$ gulp minify
+$ NODE_ENV=production npm start
 ```
 
 ## Run Tests
@@ -20,16 +35,10 @@ $ bower install
 $ npm test
 ```
 
-## Run App In Development
-```
-$ gulp run
-```
-
-## Run App in Production
-```
-$ npm start
-```
-
 ## Deploy
 
-The plan is to deploy to NodeJitsu, but that won't work until NodeJitsu starts supporting Node 0.11 or 0.12.
+MORE TO COME
+```
+$ gulp compile-scss
+$ gulp minify
+```

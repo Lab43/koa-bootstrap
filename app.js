@@ -23,8 +23,8 @@ app.use(views('./views', 'jade'));
 app.use(function *(next) {
   this.locals = {
     siteName: config.name,
-    scripts: config.scripts,
-    stylesheets: config.stylesheets
+    scripts: config.minifyScripts ? ['public/js/all.js'] : config.scripts,
+    stylesheets: config.minifyStylesheets ? ['public/css/all.css'] : config.stylesheets,
   };
   yield next;
 });

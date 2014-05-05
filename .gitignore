@@ -12,5 +12,5 @@ npm-debug.log
 /.sass-cache
 /public/css
 
-# build
-/public/build
+# minified js
+/public/js/all.js

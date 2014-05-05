@@ -2,8 +2,6 @@ var config = {
   all: {
     name: 'Koa Bootstrap',
     port: process.env.PORT || 3000,
-  },
-  development: {
     scripts: [
       'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js',
       'bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js',
@@ -22,13 +20,13 @@ var config = {
       'public/css/app.css'
     ]
   },
+  development: {
+    minifyScripts: false,
+    minifyStylesheets: false
+  },
   production: {
-    scripts: [
-      'public/build/all.js'
-    ],
-    stylesheets: [
-      'public/build/all.css'
-    ]
+    minifyScripts: true,
+    minifyStylesheets: true
   },
 };
 
